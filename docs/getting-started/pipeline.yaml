@@ -22,11 +22,6 @@ spec:
     - name: build-docker-image
       taskRef:
         name: build-docker-image
-      conditions:
-      - conditionRef: "go-test"
-        resources:
-          - name: source-repo
-            resource: source-repo
       params:
         - name: pathToContext
           value: /workspace/source-repo
@@ -103,20 +98,6 @@ spec:
         - "$(resources.outputs.builtImage.url)"
         - --no-cache
         - "$(params.pathToContext)"
----
-apiVersion: tekton.dev/v1alpha1
-kind: Condition
-metadata:
-  name: go-test
-  namespace: getting-started
-spec:
-  resources:
-    - name: source-repo
-      type: git
-  check:
-    image: golang
-    command: ["go"]
-    args: ['test', "$(resources.source-repo.path)/..."]
 ---
 # Finally, we need something to receive our cloudevent announcing success!
 # That is this services only purpose
