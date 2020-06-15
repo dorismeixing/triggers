@@ -16,7 +16,7 @@ spec:
   - name: GitHubSecretName
     value: webhook-secret # release-secret
   - name: GitHubAccessTokenKey
-    value: af183521da8b0001a08a20ac745b7068d6fddfee
+    value: 6505f0831e1d679ba0ad7c8e0d0dfe7195ad4b97
   - name: GitHubSecretStringKey
     value: release-secret
   - name: ExternalDomain
